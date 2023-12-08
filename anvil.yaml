@@ -1,0 +1,512 @@
+correct_dependency_ids: {}
+dependencies: []
+exported_table_schema:
+- python_name: fakequestion
+  client: search
+  server: full
+  name: fakeQuestion
+  columns:
+    OILaTY3EI_s=:
+      name: answerA
+      type: string
+      admin_ui: {order: 2, width: 200}
+    dyBcSMrJFtE=:
+      name: _avgTime
+      type: number
+      admin_ui: {order: 12, width: 200}
+    WxUXVFDz9Co=:
+      name: explanation
+      type: string
+      admin_ui: {order: 7, width: 200}
+    ELpcie6aKuQ=:
+      name: questionText
+      type: string
+      admin_ui: {order: 1, width: 200}
+    ESNIwajGJyI=:
+      name: answerB
+      type: string
+      admin_ui: {order: 3, width: 200}
+    v_5ZWpIAeAA=:
+      name: answerC
+      type: string
+      admin_ui: {order: 4, width: 200}
+    LehbTtpZ5To=:
+      name: countAnswers
+      type: number
+      admin_ui: {order: 9, width: 200}
+    gePcLm2cT5o=:
+      name: Total Time
+      type: string
+      admin_ui: {order: 11, width: 200}
+    gFR7POwC0rg=:
+      name: countCountAnswers
+      type: number
+      admin_ui: {order: 8, width: 200}
+    wLhZpu_X3b8=:
+      name: _correct%
+      type: number
+      admin_ui: {order: 10, width: 200}
+    tf088Hp2eZ4=:
+      name: correctAnswer
+      type: number
+      admin_ui: {order: 6, width: 200}
+    ruLWUB4NqO4=:
+      name: answerD
+      type: string
+      admin_ui: {order: 5, width: 200}
+    tZNWW8aH+QE=:
+      name: questionID
+      type: string
+      admin_ui: {order: 0, width: 200}
+  id: 543346
+- python_name: question
+  client: full
+  server: full
+  name: Question
+  columns:
+    sx9r4DFbeos=:
+      name: _correct%
+      type: number
+      admin_ui: {order: 10, width: 200}
+    _kBHXGErYDs=:
+      name: answerD
+      type: string
+      admin_ui: {order: 5, width: 200}
+    PnZ6Ngpb4Cs=:
+      name: elo
+      type: number
+      admin_ui: {order: 13, width: 200}
+    vta3qg1ZB9I=:
+      name: questionID
+      type: string
+      admin_ui: {order: 0, width: 200}
+    NVJvP2jNbT0=:
+      name: correctAnswer
+      type: string
+      admin_ui: {order: 5.5, width: 200}
+    oo6_g+NLp4U=:
+      name: explanationB
+      type: string
+      admin_ui: {order: 6.5, width: 200}
+    2JoCTVx20Ns=:
+      name: explanationD
+      type: string
+      admin_ui: {order: 7.625, width: 200}
+    DCBPjSBtK7I=:
+      name: questionText
+      type: string
+      admin_ui: {order: 1, width: 200}
+    4If8Khcbr0k=:
+      name: answerC
+      type: string
+      admin_ui: {order: 4, width: 200}
+    k5JVfSBWXpA=:
+      name: answerA
+      type: string
+      admin_ui: {order: 2, width: 200}
+    orAQ1Zxt4zI=:
+      name: answerB
+      type: string
+      admin_ui: {order: 3, width: 200}
+    59SGlyLQpGY=:
+      name: explanationC
+      type: string
+      admin_ui: {order: 7.25, width: 200}
+    b01dVmfqcgI=:
+      name: _avgTime
+      type: number
+      admin_ui: {order: 12, width: 200}
+    4Q20xHY9CPE=:
+      name: questionTags
+      type: string
+      admin_ui: {order: 0.5, width: 200}
+    i50MqQ0ey50=:
+      name: countCorrectAnswers
+      type: number
+      admin_ui: {order: 8, width: 200}
+    +KqLCvINp4M=:
+      name: totalTime
+      type: number
+      admin_ui: {order: 11, width: 200}
+    putrLECL70Y=:
+      name: explanationA
+      type: string
+      admin_ui: {order: 6.25, width: 200}
+    SNk5CAFwzwk=:
+      name: countAnswers
+      type: number
+      admin_ui: {order: 9, width: 200}
+  id: 543686
+- python_name: users
+  client: search
+  server: full
+  name: Users
+  columns:
+    M9zAswFncO8=:
+      name: n_password_failures
+      type: number
+      admin_ui: {order: 4, width: 200}
+    Phiro1YgR3k=:
+      name: email
+      type: string
+      admin_ui: {order: 0, width: 200}
+    YRp8jB3BKl4=:
+      name: confirmed_email
+      type: bool
+      admin_ui: {order: 5, width: 200}
+    jxm_1grhaDs=:
+      name: signed_up
+      type: datetime
+      admin_ui: {order: 6, width: 200}
+    k967CRhE_cE=:
+      name: last_login
+      type: datetime
+      admin_ui: {order: 2, width: 200}
+    xQVyXGZEeXg=:
+      name: password_hash
+      type: string
+      admin_ui: {order: 3, width: 200}
+    yHV4UTkcAwY=:
+      name: enabled
+      type: bool
+      admin_ui: {order: 1, width: 200}
+  id: 543714
+- python_name: sessions
+  client: search
+  server: full
+  name: Sessions
+  columns:
+    +99ltwHmLxg=:
+      name: StartTime
+      type: datetime
+      admin_ui: {order: 2, width: 200}
+    5UKucqU2tnQ=:
+      name: UserID
+      type: string
+      admin_ui: {order: 1, width: 200}
+    EezioKG0T+o=:
+      name: _length
+      type: number
+      admin_ui: {order: 4, width: 200}
+    eQwrbtapAhs=:
+      name: EndTime
+      type: datetime
+      admin_ui: {order: 3, width: 200}
+    h616jW8X3to=:
+      name: sessionID
+      type: string
+      admin_ui: {order: 0, width: 200}
+  id: 547155
+- python_name: responses
+  client: full
+  server: full
+  name: Responses
+  columns:
+    H9vsuhpUZws=:
+      name: response
+      type: string
+      admin_ui: {order: 6, width: 200}
+    JyGcHM4NDnU=:
+      name: correct
+      type: bool
+      admin_ui: {order: 5, width: 200}
+    SLdmrRlQsb0=:
+      name: questionID
+      type: string
+      admin_ui: {order: 3, width: 200}
+    adfk5N+3d6A=:
+      name: date
+      type: date
+      admin_ui: {order: 1, width: 200}
+    bSzfjKvXCXc=:
+      name: userID
+      type: string
+      admin_ui: {order: 2, width: 200}
+  id: 547161
+- python_name: tag
+  client: search
+  server: full
+  name: tag
+  columns:
+    RNgi1hwrMws=:
+      name: tagExplanation
+      type: string
+      admin_ui: {order: 1, width: 200}
+    phQMejqGIY0=:
+      name: tagID
+      type: string
+      admin_ui: {order: 0, width: 200}
+  id: 547163
+- python_name: user
+  client: full
+  server: full
+  name: User
+  columns:
+    Hc5xmip4Lyw=:
+      name: userID
+      type: string
+      admin_ui: {order: -2, width: 200}
+    _7glFhs2QL8=:
+      name: firstName
+      type: string
+      admin_ui: {order: -1, width: 200}
+    W_VM7EjeJbI=:
+      name: preferences
+      type: string
+      admin_ui: {order: 5, width: 200}
+    Vu4KhfGtOuI=:
+      name: email
+      type: string
+      admin_ui: {order: 3, width: 200}
+    LoO_FyKb1eA=:
+      name: eloDictonary
+      type: simpleObject
+      admin_ui: {order: 6, width: 200}
+    rBp8qipfIsA=:
+      name: phone
+      type: string
+      admin_ui: {order: 4, width: 200}
+    EHHi79g38tM=:
+      name: lastName
+      type: string
+      admin_ui: {order: -0.5, width: 200}
+    ZkcK3npAzcQ=:
+      name: institutionID
+      type: string
+      admin_ui: {order: 1, width: 200}
+    w_9uNZ4N1qk=:
+      name: role
+      type: string
+      admin_ui: {order: 2, width: 200}
+  id: 547170
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: true, enable_automatically: true, use_email: true,
+    confirm_email: true, use_google: true}
+  server_config: {user_table: users}
+- source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+startup: {type: form, module: Dashboard}
+package_name: M3_App_1_1
+allow_embedding: false
+name: M3 App 1 1
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+startup_form: null
+db_schema:
+  users:
+    client: search
+    server: full
+    columns:
+    - name: email
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {order: 1, width: 200}
+      type: bool
+    - name: last_login
+      admin_ui: {order: 2, width: 200}
+      type: datetime
+    - name: password_hash
+      admin_ui: {order: 3, width: 200}
+      type: string
+    - name: n_password_failures
+      admin_ui: {order: 4, width: 200}
+      type: number
+    - name: confirmed_email
+      admin_ui: {order: 5, width: 200}
+      type: bool
+    - name: signed_up
+      admin_ui: {order: 6, width: 200}
+      type: datetime
+    title: Users
+  question:
+    client: full
+    server: full
+    columns:
+    - name: questionID
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: questionText
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: answerA
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: answerB
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: answerC
+      admin_ui: {width: 200, order: 4}
+      type: string
+    - name: answerD
+      admin_ui: {width: 200, order: 5}
+      type: string
+    - name: questionTags
+      admin_ui: {width: 200, order: 0.5}
+      type: string
+    - name: explanationA
+      admin_ui: {order: 6.25, width: 200}
+      type: string
+    - name: countCorrectAnswers
+      admin_ui: {width: 200, order: 8}
+      type: number
+    - name: countAnswers
+      admin_ui: {width: 200, order: 9}
+      type: number
+    - name: _correct%
+      admin_ui: {width: 200, order: 10}
+      type: number
+    - name: totalTime
+      admin_ui: {width: 200, order: 11}
+      type: number
+    - name: _avgTime
+      admin_ui: {width: 200, order: 12}
+      type: number
+    - name: elo
+      admin_ui: {width: 200, order: 13}
+      type: number
+    - name: explanationB
+      admin_ui: {width: 200, order: 6.5}
+      type: string
+    - name: explanationC
+      admin_ui: {width: 200, order: 7.25}
+      type: string
+    - name: explanationD
+      admin_ui: {width: 200, order: 7.625}
+      type: string
+    - name: correctAnswer
+      admin_ui: {order: 5.5, width: 200}
+      type: string
+    title: Question
+  fakequestion:
+    client: search
+    server: full
+    columns:
+    - name: questionID
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: questionText
+      admin_ui: {order: 1, width: 200}
+      type: string
+    - name: answerA
+      admin_ui: {order: 2, width: 200}
+      type: string
+    - name: answerB
+      admin_ui: {order: 3, width: 200}
+      type: string
+    - name: answerC
+      admin_ui: {order: 4, width: 200}
+      type: string
+    - name: answerD
+      admin_ui: {order: 5, width: 200}
+      type: string
+    - name: correctAnswer
+      admin_ui: {order: 6, width: 200}
+      type: number
+    - name: explanation
+      admin_ui: {width: 200, order: 7}
+      type: string
+    - name: countCountAnswers
+      admin_ui: {width: 200, order: 8}
+      type: number
+    - name: countAnswers
+      admin_ui: {width: 200, order: 9}
+      type: number
+    - name: _correct%
+      admin_ui: {width: 200, order: 10}
+      type: number
+    - name: Total Time
+      admin_ui: {width: 200, order: 11}
+      type: string
+    - name: _avgTime
+      admin_ui: {width: 200, order: 12}
+      type: number
+    title: fakeQuestion
+  sessions:
+    client: search
+    server: full
+    columns:
+    - name: sessionID
+      admin_ui: {order: 0, width: 200}
+      type: string
+    - name: UserID
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: StartTime
+      admin_ui: {width: 200, order: 2}
+      type: datetime
+    - name: EndTime
+      admin_ui: {width: 200, order: 3}
+      type: datetime
+    - name: _length
+      admin_ui: {width: 200, order: 4}
+      type: number
+    title: Sessions
+  responses:
+    client: full
+    server: full
+    columns:
+    - name: userID
+      admin_ui: {order: 2, width: 200}
+      type: string
+    - name: questionID
+      admin_ui: {order: 3, width: 200}
+      type: string
+    - name: correct
+      admin_ui: {width: 200, order: 5}
+      type: bool
+    - name: response
+      admin_ui: {width: 200, order: 6}
+      type: string
+    - name: date
+      admin_ui: {width: 200, order: 1}
+      type: date
+    title: Responses
+  tag:
+    client: search
+    server: full
+    columns:
+    - name: tagID
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: tagExplanation
+      admin_ui: {width: 200, order: 1}
+      type: string
+    title: tag
+  user:
+    client: full
+    server: full
+    columns:
+    - name: userID
+      admin_ui: {order: -2, width: 200}
+      type: string
+    - name: institutionID
+      admin_ui: {width: 200, order: 1}
+      type: string
+    - name: role
+      admin_ui: {width: 200, order: 2}
+      type: string
+    - name: email
+      admin_ui: {width: 200, order: 3}
+      type: string
+    - name: phone
+      admin_ui: {width: 200, order: 4}
+      type: string
+    - name: preferences
+      admin_ui: {width: 200, order: 5}
+      type: string
+    - name: eloDictonary
+      admin_ui: {width: 200, order: 6}
+      type: simpleObject
+    - name: firstName
+      admin_ui: {width: 200, order: -1}
+      type: string
+    - name: lastName
+      admin_ui: {width: 200, order: -0.5}
+      type: string
+    title: User
+renamed: true

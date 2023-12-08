@@ -1,0 +1,56 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - name: grid_panel_1
+    properties: {}
+    type: GridPanel
+    layout_properties: {grid_position: 'XLZHCD,BFSUWQ'}
+    components:
+    - name: label_1
+      properties: {text: 'First Name:'}
+      type: Label
+      layout_properties: {row: OPPJMW, width_xs: 4, col_xs: 1}
+    - name: boxFirstName
+      properties: {}
+      type: TextBox
+      layout_properties: {row: OPPJMW, width_xs: 4, col_xs: 6}
+    - name: label_2
+      properties: {text: 'Last Name:'}
+      type: Label
+      layout_properties: {row: SLDIQT, width_xs: 4, col_xs: 1}
+    - name: boxLastName
+      properties: {}
+      type: TextBox
+      layout_properties: {row: SLDIQT, width_xs: 4, col_xs: 6}
+    - name: label_3
+      properties: {text: 'Email:'}
+      type: Label
+      layout_properties: {row: DVQPLP, width_xs: 4, col_xs: 1}
+    - name: boxEmail
+      properties: {}
+      type: TextBox
+      layout_properties: {row: DVQPLP, width_xs: 4, col_xs: 6}
+    - name: label_4
+      properties: {text: 'Phone Number:'}
+      type: Label
+      layout_properties: {row: BXUPQD, width_xs: 4, col_xs: 1}
+    - name: boxPhone
+      properties: {}
+      type: TextBox
+      layout_properties: {row: BXUPQD, width_xs: 4, col_xs: 6}
+    - name: buSaveChanges
+      properties: {text: Save Changes}
+      type: Button
+      layout_properties: {row: QQRGSR, width_xs: 4, col_xs: 3}
+      event_bindings: {click: buSaveChanges_click}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
