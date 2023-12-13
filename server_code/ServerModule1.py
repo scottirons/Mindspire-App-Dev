@@ -24,6 +24,8 @@ from random import shuffle
 def getQuestions(tag, studentID):
   answers = ['A', 'B', 'C', 'D']
   questions = app_tables.question.search(questionTags=q.like(f'%{tag}%'))
+  print(tag)
+  print(len(questions))
   studentELO = app_tables.user.get(userID=studentID)['eloDictonary'][tag]
   questionList = []
   for question in questions:

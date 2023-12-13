@@ -28,7 +28,7 @@ class SkillSelector(SkillSelectorTemplate):
       pass
     else:
       skill = self.ddSkill.selected_value[0][1]
-      qList = anvil.server.call('getQuestions', self.getTag(skill), 'karl.zipple@gmail.com')
+      qList = anvil.server.call('getQuestions', skill, 'karl.zipple@gmail.com')
       print(len(qList))
       open_form('Question', qList, game = 'game')
       return

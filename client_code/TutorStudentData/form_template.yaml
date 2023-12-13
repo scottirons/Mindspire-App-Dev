@@ -1,0 +1,34 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - name: rich_text_1
+    properties: {content: '# Data for Student Name', align: center}
+    type: RichText
+    layout_properties: {grid_position: 'QBFKLB,BYRVAI'}
+    data_bindings: []
+  - name: data_grid_1
+    properties:
+      columns:
+      - {id: JKSDUP, title: Column 1, data_key: column_1}
+      - {id: VJQQOR, title: Column 2, data_key: column_2}
+      - {id: OJLQEN, title: Column 3, data_key: column_3}
+      - {id: HVSMFA, data_key: column_4, title: Column 4}
+      wrap_on: mobile
+      visible: true
+    type: DataGrid
+    components:
+    - name: repeating_panel_1
+      properties: {item_template: TutorStudentData.RowTemplate1}
+      type: RepeatingPanel
+    layout_properties: {grid_position: 'GNSABT,WNCANF'}
+- type: FlowPanel
+  properties: {}
+  name: navbar_links
+  layout_properties: {slot: nav-right}
