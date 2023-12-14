@@ -33,6 +33,7 @@ class SkillSelector(SkillSelectorTemplate):
     # TODO: figure out how to raise an alert "You must select at least one skill"
     if not self.multi_select_dropdown.selected_items:
       print("You must select at least one item!")
+      return
     
     selected_tags = self.multi_select_dropdown.selected_items
     
