@@ -508,5 +508,8 @@ db_schema:
     - name: lastName
       admin_ui: {width: 200, order: -0.5}
       type: string
+    - name: tutorID
+      admin_ui: {order: 3.5, width: 200}
+      type: string
     title: User
 renamed: true

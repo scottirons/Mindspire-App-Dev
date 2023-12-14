@@ -7,8 +7,16 @@ components:
   properties: {}
   name: content_panel
   layout_properties: {slot: default}
-  components: []
+  components:
+  - name: ddStudent
+    properties: {}
+    type: DropDown
+    layout_properties: {grid_position: 'XETQPZ,DOHYIG'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+- name: rtTitle
+  properties: {content: '## Welcome back, '}
+  type: RichText
+  layout_properties: {slot: title}
