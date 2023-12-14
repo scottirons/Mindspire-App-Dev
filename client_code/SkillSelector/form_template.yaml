@@ -1,12 +1,22 @@
 container: {type: ColumnPanel}
 components:
-- name: ddSkill
-  properties: {placeholder: Please choose a skill to practice, include_placeholder: true}
-  type: DropDown
-  layout_properties: {grid_position: 'GGHJLY,QNLROZ'}
+- name: column_panel_1
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'KWYMKH,RRJQBP'}
+  components:
+  - name: drop_down
+    properties: {}
+    type: DropDown
+    layout_properties: {grid_position: 'QWFNPH,ANAQWD'}
+    event_bindings: {change: drop_down_change}
+  - name: token_box_1
+    properties: {}
+    type: form:SkillSelector.TokenBox
+    layout_properties: {grid_position: 'QWFNPH,YOJUJN'}
 - name: buStart
   properties: {text: Start Quiz}
   type: Button
-  layout_properties: {grid_position: 'KFVATT,GHBJYO'}
+  layout_properties: {grid_position: 'AHJAVU,CICASP'}
   event_bindings: {click: buStart_click}
 is_package: true
