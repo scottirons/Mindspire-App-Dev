@@ -14,7 +14,6 @@ class TokenBox(TokenBoxTemplate):
 
   @tokens_list.setter
   def tokens_list(self, value):
-    print("setting to [{lv}]".format(lv=value))
     if value is not None:
       if type(value) is list:
         self.raw_token_box_1.tokens_list = value
