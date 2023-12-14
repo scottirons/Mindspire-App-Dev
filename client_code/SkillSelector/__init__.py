@@ -39,16 +39,13 @@ class SkillSelector(SkillSelectorTemplate):
     
     #if anvil.users.get_user() is None:
     #  signin = anvil.users.login_with_form()
-    if self.ddSkill.selected_value is None:
-      print('Stop that')
-      pass
-    else:
-      skill = self.ddSkill.selected_value[0][1]
-      qList = anvil.server.call('getQuestions', skill, 'karl.zipple@gmail.com')
-      print(len(qList))
-      open_form('Question', qList, game = 'game')
-      return
-    pass
+    q_list = []
+    for tag in selected_tags:
+      skill = tag[1]
+      qList += anvil.server.call('getQuestions', skill, anvil.users.get_user())
+      
+    if q_list:
+      open_form('Question', q_list, game = 'game')
 
   def getTag(self, skill):
     return app_tables.tag.search(tagExplanation=skill)[0]['tagID']
