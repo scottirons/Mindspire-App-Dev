@@ -1,9 +1,5 @@
 container: {type: ColumnPanel}
 components:
-- name: ddSkill
-  properties: {placeholder: Please choose a skill to practice, include_placeholder: true}
-  type: DropDown
-  layout_properties: {grid_position: 'GGHJLY,QNLROZ'}
 - name: buStart
   properties: {text: Start Quiz}
   type: Button
