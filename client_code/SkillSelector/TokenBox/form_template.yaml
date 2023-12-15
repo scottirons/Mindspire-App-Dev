@@ -26,4 +26,5 @@ components:
     properties: {}
     type: form:SkillSelector.RawTokenBox
     layout_properties: {grid_position: 'RCODMY,ONTMAS'}
+    event_bindings: {x_element_added: raw_token_box_1_x_element_added}
 container: {type: ColumnPanel}

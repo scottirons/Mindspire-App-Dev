@@ -5,8 +5,9 @@ class TokenBox(TokenBoxTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    self.raw_token_box_1.set_event_handler('x_element_added', self.raw_token_box_1_x_element_added)
+    self.raw_token_box_1.set_event_handler('x_element_removed', self.raw_token_box_1_x_element_removed)
 
-    # Any code you write here will run when the form opens.
 
   @property
   def tokens_list(self):

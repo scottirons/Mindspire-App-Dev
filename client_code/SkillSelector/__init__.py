@@ -16,6 +16,8 @@ class SkillSelector(SkillSelectorTemplate):
     #   item_list.append((row['tagExplanation'], row))
     # self.ddSkill.items = item_list
     self.init_components(**properties)
+    self.token_box.set_event_handler('x_element_added', self.token_box_x_element_added)
+    self.token_box.set_event_handler('x_element_removed', self.token_box_x_element_removed)
 
     # populate rows in dropdown
     item_list = [(row['tagExplanation'], row) for row in app_tables.tag.search()]
@@ -31,22 +33,19 @@ class SkillSelector(SkillSelectorTemplate):
   
   def add_to_dropdown(self, value):
     """Add an item to the DropDown's items list."""
-    self.drop_down.items = self.drop_down.items + [value]
+    self.drop_down.items = self.drop_down.items + [(value['tagExplanation'], value)]
 
   def remove_from_dropdown(self, text):
     """Remove an item from the DropDown's items list."""
     items = self.drop_down.items
-    if text in items:
-      items.remove(text)
+    items.remove((text['tagExplanation'], text))
     self.drop_down.items = items
 
   def drop_down_change(self, **event_args):
     """This method is called when an item is selected"""
     ele = event_args['sender'].selected_value
     # Make it so the token_box holds the whole object, but just displays the tag information. Then when send is called, it sends the full object so it can use the tags
-    self.token_box.add(ele['tagExplanation'])
-    # Go back to having self.placeholder selected, to allow the same value 
-    # to be selected multiple times.
+    self.token_box.add(ele)
     self.drop_down.selected_value = self.drop_down.placeholder
 
   @property
@@ -54,7 +53,7 @@ class SkillSelector(SkillSelectorTemplate):
     return self.token_box.tokens_list
 
   @selected_items.setter
-  def selected_items(self,value):
+  def selected_items(self, value):
     self.token_box.tokens_list = []
     if value is not None:
       if type(value) is list:
@@ -63,15 +62,11 @@ class SkillSelector(SkillSelectorTemplate):
       
   def token_box_x_element_added(self, text, **event_args):
     """This method is called Raised when an element is added to the token box"""
-    if self.unique:
-      self.remove_from_dropdown(text)
-    self.raise_event('x_element_selected',text=text)
+    self.remove_from_dropdown(text)
 
   def token_box_x_element_removed(self, text, **event_args):
     """This method is called Raised when an element is removed from token box"""
-    if self.unique:
-      self.add_to_dropdown(text)
-    self.raise_event('x_element_deselected',text=text)
+    self.add_to_dropdown(text)
 
   def buStart_click(self, **event_args):
     # TODO: figure out how to raise an alert "You must select at least one skill"
