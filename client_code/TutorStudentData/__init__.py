@@ -16,7 +16,15 @@ class TutorStudentData(TutorStudentDataTemplate):
     self.rtTitle.content = '## Welcome back, ' + app_tables.user.get(userID=user)['firstName'] + '!'
     item_list = ['']
     for row in app_tables.user.search(tutorID = self.user):
-      item_list.append((row['firstName'] + ' ' + row['lastName'], row))
+      item_list.append((row['firstName'] + ' ' + row['lastName'], (row['firstName'] + ' ' + row['lastName'], row)))
     self.ddStudent.items = item_list
 
     # Any code you write here will run before the form opens.
+
+  def ddStudent_change(self, **event_args):
+    self.text_box_1.text = ''
+    self.rtSelect.content = '#### Select skills for ' + self.ddStudent.selected_value[0]
+    for skill in self.ddStudent.selected_value[1]['assignedSkills']:
+      self.text_box_1.text += skill
+    self.rtSessions.content = '#### Sessions for ' + self.ddStudent.selected_value[0]
+    pass
