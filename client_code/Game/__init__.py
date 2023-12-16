@@ -11,10 +11,11 @@ import anvil.tables as tables
 import anvil.tables.query as q
 import random
 import datetime
+import base64
 from anvil.tables import app_tables
 
 class Game(GameTemplate):
-  def __init__(self, qList = [], game = '', **properties):
+  def __init__(self, user = 'karl.zipple@gmail.com', qList = [], game = '', **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     #self.q = app_tables.question.get(questionID="1")
@@ -23,11 +24,13 @@ class Game(GameTemplate):
     self.missed = []
     self.game = game
     self.qList = qList
-    self.q = self.randomQ()
+    # self.q = self.randomQ()
     self.submitted = False
     self.missed = []
-    # Any code you write here will run before the form opens.
-    self.update_display()
+    self.imLives.source = app_tables.images.get(name='3')['image']
+    self.gameID = base64.b64encode((user + str(datetime.datetime.now())).encode()).decode()
+    print(self.gameID)
+    # self.update_display()
 
   def update_display(self):
     # this handles a variety of small tasks that need to be performed when a new question loads.

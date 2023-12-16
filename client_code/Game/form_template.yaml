@@ -12,6 +12,12 @@ components:
     properties: {role: outlined, align: center, text: ''}
     type: TextBox
     layout_properties: {grid_position: 'DCIMZS,MFKZOW'}
+  - name: imLives
+    properties: {height: 37, display_mode: shrink_to_fit, horizontal_align: left}
+    type: Image
+    layout_properties: {grid_position: 'DCIMZS,JSHWRU'}
+    data_bindings:
+    - {property: source, code: '', writeback: false}
   - name: question
     properties: {content: '', format: restricted_html, font_size: 16}
     type: RichText
