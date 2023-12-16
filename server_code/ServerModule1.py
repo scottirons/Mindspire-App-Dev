@@ -23,10 +23,7 @@ from random import shuffle
 @anvil.server.callable
 def getQuestions(tag, studentID):
   answers = ['A', 'B', 'C', 'D']
-  print(tag)
   questions = app_tables.question.search(questionTags=q.like(f'%{tag}%'))
-  print(tag)
-  print(len(questions))
   studentELO = app_tables.user.get(userID=studentID)['eloDictonary'][tag]
   questionList = []
   for question in questions:

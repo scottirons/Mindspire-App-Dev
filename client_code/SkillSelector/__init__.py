@@ -80,8 +80,8 @@ class SkillSelector(SkillSelectorTemplate):
     #  signin = anvil.users.login_with_form()
     q_list = []
     for tag in selected_tags:
-      skill = tag[1]
-      q_list += anvil.server.call('getQuestions', skill, anvil.users.get_user())
+      skill = tag[1][1]
+      q_list += anvil.server.call('getQuestions', skill, 'karl.zipple@gmail.com')
       
     if q_list:
       open_form('Question', q_list, game = 'game')
