@@ -13,22 +13,25 @@ class RawTokenBox(RawTokenBoxTemplate):
   def add(self, text):
     """Add a token to the Flow Panel (and call the add_callback)."""
     token = Button(
-      text=text,
+      text=text['tagExplanation'],
       icon="fa:times",
       icon_align="left",
       role="primary-color",
     )
+    # used for removal, but only the descriptive name is actually shown
+    token.tag_data = text
+    
     token.set_event_handler("click", self.remove)
     self.flow_panel_1.add_component(token)
     self.token_texts_list.append(text)
-    self.raise_event('x_element_added',text=token.text)
+    self.raise_event('x_element_added',text=text)
 
   def remove(self, **event_args):
     """Remove a token from the Flow Panel (and call the remove_callback)."""
     token = event_args['sender']
-    self.raise_event('x_element_removed',text=token.text)
+    self.raise_event('x_element_removed',text=token.tag_data)
     token.remove_from_parent()
-    self.token_texts_list.remove(token.text)
+    self.token_texts_list.remove(token.tag_data)
     
   @property
   def tokens_list(self):

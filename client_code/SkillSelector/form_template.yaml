@@ -1,8 +1,26 @@
 container: {type: ColumnPanel}
 components:
+- name: column_panel
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'KWYMKH,RRJQBP'}
+  components:
+  - name: drop_down
+    properties: {placeholder: Select the topics you want to test}
+    type: DropDown
+    layout_properties: {grid_position: 'QWFNPH,ANAQWD'}
+    event_bindings: {change: drop_down_change}
+    data_bindings: []
+  - name: token_box
+    properties: {}
+    type: form:SkillSelector.TokenBox
+    layout_properties: {grid_position: 'QWFNPH,YOJUJN'}
+    event_bindings: {x_element_added: token_box_x_element_added}
+    data_bindings:
+    - {property: tokens_list, code: 'self.item['''']', writeback: false}
 - name: buStart
   properties: {text: Start Quiz}
   type: Button
-  layout_properties: {grid_position: 'KFVATT,GHBJYO'}
+  layout_properties: {grid_position: 'AHJAVU,CICASP'}
   event_bindings: {click: buStart_click}
 is_package: true
