@@ -515,4 +515,15 @@ db_schema:
       admin_ui: {width: 200, order: 9}
       type: simpleObject
     title: User
+  images:
+    title: Images
+    client: search
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200}
+      type: string
+    - name: image
+      admin_ui: {width: 200}
+      type: media
 renamed: true
