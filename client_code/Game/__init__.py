@@ -135,4 +135,3 @@ class Game(GameTemplate):
     totalp = sum(q['p'] for q in self.qList)
     for q in self.qList:
       q['p'] /= totalp
-    pass
