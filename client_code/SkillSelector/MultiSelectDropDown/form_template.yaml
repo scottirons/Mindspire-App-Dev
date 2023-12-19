@@ -1,0 +1,7 @@
+container: {type: ColumnPanel}
+components:
+- name: drop_down
+  properties: {}
+  type: DropDown
+  layout_properties: {grid_position: 'XLOOTH,GMQKNA'}
+is_package: true

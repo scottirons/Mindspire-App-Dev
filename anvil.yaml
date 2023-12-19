@@ -508,12 +508,12 @@ db_schema:
     - name: lastName
       admin_ui: {width: 200, order: -0.5}
       type: string
-    - name: assignedSkills
-      admin_ui: {width: 200}
-      type: simpleObject
     - name: tutorID
-      admin_ui: {width: 200}
+      admin_ui: {order: 3.5, width: 200}
       type: string
+    - name: assignedSkills
+      admin_ui: {width: 200, order: 9}
+      type: simpleObject
     title: User
   images:
     title: Images
