@@ -11,7 +11,6 @@ import anvil.tables as tables
 import anvil.tables.query as q
 import random
 import datetime
-import base64
 from anvil.tables import app_tables
 
 class Game(GameTemplate):
@@ -35,6 +34,7 @@ class Game(GameTemplate):
     self.imLives.source = app_tables.images.get(name=str(self.lives))['image']
     self.gameID = base64.b64encode((user + str(datetime.datetime.now())).encode()).decode()
     self.update_display()
+    
 
   def update_display(self):
     # this handles a variety of small tasks that need to be performed when a new question loads.
@@ -59,10 +59,13 @@ class Game(GameTemplate):
     self.submit.text = 'Submit'
     self.submitted = False
 
-  def radio_button_1_clicked(self, **event_args):
-    """This method is called when this radio button is selected"""
-    pass
-
+  def getQuestions(self, tags, user = 'karl.zipple@gmail.com'):
+    # these two commands serve to get all of the questions matching a tag, then remove the duplicates
+    # though questions currently only have one content tag, this will future-proof it
+    questionList = [dict(list(row)) for tag in tags for row in app_tables.question.search(questionTags = tag)]
+    questionList = [dict(t) for t in {tuple(d.items()) for d in questionList}]
+    return questionList
+  
   def submit__click(self, **event_args):
     if self.radio_A.get_group_value() is None:
       return
