@@ -381,6 +381,9 @@ db_schema:
     - name: correctAnswer
       admin_ui: {order: 5.5, width: 200}
       type: string
+    - name: isNoChange
+      admin_ui: {width: 200}
+      type: bool
     title: Question
   fakequestion:
     client: search

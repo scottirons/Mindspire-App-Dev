@@ -15,7 +15,7 @@ import base64
 from anvil.tables import app_tables
 
 class Game(GameTemplate):
-  def __init__(self, user = 'karl.zipple@gmail.com', qList = [], game = '', **properties):
+  def __init__(self, user = 'karl.zipple@gmail.com', qList = [], game = '', lives = 3, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     #self.q = app_tables.question.get(questionID="1")
@@ -24,10 +24,11 @@ class Game(GameTemplate):
     self.missed = []
     self.game = game
     self.qList = qList
+    self.lives = lives
     # self.q = self.randomQ()
     self.submitted = False
     self.missed = []
-    self.imLives.source = app_tables.images.get(name='3')['image']
+    self.imLives.source = app_tables.images.get(name=str(self.lives))['image']
     self.gameID = base64.b64encode((user + str(datetime.datetime.now())).encode()).decode()
     print(self.gameID)
     # self.update_display()
