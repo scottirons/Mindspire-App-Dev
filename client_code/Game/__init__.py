@@ -24,14 +24,17 @@ class Game(GameTemplate):
     self.missed = []
     self.game = game
     self.qList = qList
+    self.user = user
+    self.startTime = datetime.datetime.now()
+    if self.qList == []:
+      self.qList = anvil.server.call('getQuestions', 'e51', user)
     self.lives = lives
-    # self.q = self.randomQ()
+    self.q = self.randomQ()
     self.submitted = False
     self.missed = []
     self.imLives.source = app_tables.images.get(name=str(self.lives))['image']
     self.gameID = base64.b64encode((user + str(datetime.datetime.now())).encode()).decode()
-    print(self.gameID)
-    # self.update_display()
+    self.update_display()
 
   def update_display(self):
     # this handles a variety of small tasks that need to be performed when a new question loads.
@@ -70,9 +73,13 @@ class Game(GameTemplate):
         self.updateELO(1)
       else:
         self.updateELO(0)
+        self.lives -= 1
         self.incorrect += 1
+        self.imLives.source = app_tables.images.get(name=str(self.lives))['image']
         self.missed.append(self.q)
-      app_tables.responses.add_row(date=datetime.date.today(), correct= selected == self.correctAnswer, questionID=self.q['questionID'], response=self.q['order'][selected], userID='karl.zipple@gmail.com')
+      app_tables.responses.add_row(date=datetime.date.today(), correct= selected == self.correctAnswer, 
+                                   questionID=self.q['questionID'], response=self.q['order'][selected], 
+                                   userID='karl.zipple@gmail.com', sessionID=self.gameID)
       self.qList.pop(self.qList.index(self.q))
       self.renorm()
       self.answerRT.visible = True
@@ -81,8 +88,14 @@ class Game(GameTemplate):
       self.submit.text = 'Next'
       self.submitted = True
     else:
-      self.q = self.randomQ()
-      self.update_display()
+      if self.lives > 0:
+        self.q = self.randomQ()
+        self.update_display()
+      else:
+        alert(f'Game over. You got {self.correct} questions correct. Great work!')
+        app_tables.sessions.add_row(UserID=self.user, _length=self.correct + self.incorrect, sessionID=self.gameID,
+                                   StartTime=self.startTime, EndTime=datetime.datetime.now())
+        open_form('Dashboard')
     pass
 
   def randomQ(self):

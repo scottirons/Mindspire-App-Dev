@@ -6,7 +6,6 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 import datetime as dt
-import pandas as pd
 from random import shuffle
 
 # This is a server module. It runs on the Anvil server,
@@ -24,8 +23,6 @@ from random import shuffle
 def getQuestions(tag, studentID):
   answers = ['A', 'B', 'C', 'D']
   questions = app_tables.question.search(questionTags=q.like(f'%{tag}%'))
-  print(tag)
-  print(len(questions))
   studentELO = app_tables.user.get(userID=studentID)['eloDictonary'][tag]
   questionList = []
   for question in questions:

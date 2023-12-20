@@ -294,7 +294,8 @@ startup: {type: form, module: Game}
 package_name: M3_App_1_1
 allow_embedding: false
 name: M3 App 1 1
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
+  server_spec: null}
 startup_form: null
 db_schema:
   users:
@@ -430,7 +431,7 @@ db_schema:
       type: number
     title: fakeQuestion
   sessions:
-    client: search
+    client: full
     server: full
     columns:
     - name: sessionID
@@ -468,6 +469,9 @@ db_schema:
     - name: date
       admin_ui: {width: 200, order: 1}
       type: date
+    - name: sessionID
+      admin_ui: {width: 200, order: 5}
+      type: string
     title: Responses
   tag:
     client: search
