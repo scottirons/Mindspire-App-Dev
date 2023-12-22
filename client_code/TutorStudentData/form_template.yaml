@@ -39,8 +39,11 @@ components:
     type: DataGrid
     components:
     - name: repeating_panel_1
-      properties: {item_template: TutorStudentData.RowTemplate2}
+      properties: {item_template: TutorStudentData.RowTemplate1, visible: true}
       type: RepeatingPanel
+      layout_properties: {}
+      data_bindings:
+      - {property: tag, code: 'self.item['''']', writeback: false}
     layout_properties: {grid_position: 'AHADID,WBFZCA'}
 - type: FlowPanel
   properties: {}

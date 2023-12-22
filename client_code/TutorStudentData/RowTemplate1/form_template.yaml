@@ -1,3 +1,29 @@
 is_package: true
 container: {type: DataRowPanel}
-components: []
+components:
+- name: text_box_1
+  properties: {}
+  type: TextBox
+  layout_properties: {column: JKSDUP}
+  data_bindings:
+  - {property: text, code: 'self.item[''Date'']', writeback: false}
+- name: text_box_2
+  properties: {}
+  type: TextBox
+  layout_properties: {column: VJQQOR}
+  data_bindings:
+  - {property: text, code: 'self.item[''tags'']', writeback: false}
+- name: text_box_3
+  properties: {text: ''}
+  type: TextBox
+  layout_properties: {column: OJLQEN}
+  data_bindings:
+  - {property: text, code: 'self.item[''correct'']', writeback: false}
+- name: text_box_4
+  properties: {enabled: false}
+  type: TextBox
+  layout_properties: {column: WCCFST}
+  data_bindings:
+  - {property: text, code: 'self.item[''incorrect'']', writeback: false}
+data_bindings:
+- {property: bold, code: 'self.item[''Date'']', writeback: false}
