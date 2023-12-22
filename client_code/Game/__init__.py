@@ -11,6 +11,7 @@ import anvil.tables as tables
 import anvil.tables.query as q
 import random
 import datetime
+import base64
 from anvil.tables import app_tables
 
 class Game(GameTemplate):
@@ -97,7 +98,8 @@ class Game(GameTemplate):
       else:
         alert(f'Game over. You got {self.correct} questions correct. Great work!')
         app_tables.sessions.add_row(UserID=self.user, _length=self.correct + self.incorrect, sessionID=self.gameID,
-                                   StartTime=self.startTime, EndTime=datetime.datetime.now())
+                                   StartTime=self.startTime, EndTime=datetime.datetime.now(),
+                                   correct=self.correct, incorrect=self.incorrect)
         open_form('Dashboard')
     pass
 
