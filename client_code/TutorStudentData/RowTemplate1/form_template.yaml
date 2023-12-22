@@ -8,22 +8,22 @@ components:
   data_bindings:
   - {property: text, code: 'self.item[''Date'']', writeback: false}
 - name: text_box_2
-  properties: {}
+  properties: {enabled: false, bold: true}
   type: TextBox
   layout_properties: {column: VJQQOR}
   data_bindings:
-  - {property: text, code: 'self.item[''tags'']', writeback: false}
+  - {property: text, code: 'self.item[''Skill(s)'']', writeback: false}
 - name: text_box_3
-  properties: {text: ''}
+  properties: {text: '', bold: true, enabled: false}
   type: TextBox
   layout_properties: {column: OJLQEN}
   data_bindings:
-  - {property: text, code: 'self.item[''correct'']', writeback: false}
+  - {property: text, code: 'self.item[''Correct'']', writeback: false}
 - name: text_box_4
-  properties: {enabled: false}
+  properties: {enabled: false, bold: true}
   type: TextBox
   layout_properties: {column: WCCFST}
   data_bindings:
-  - {property: text, code: 'self.item[''incorrect'']', writeback: false}
+  - {property: text, code: 'self.item[''Incorrect'']', writeback: false}
 data_bindings:
 - {property: bold, code: 'self.item[''Date'']', writeback: false}
