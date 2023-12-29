@@ -290,11 +290,12 @@ services:
 - source: /runtime/services/google.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: SkillSelector}
+startup: {type: form, module: Dashboard}
 package_name: M3_App_1_1
 allow_embedding: false
 name: M3 App 1 1
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
+  server_spec: null}
 startup_form: null
 db_schema:
   users:

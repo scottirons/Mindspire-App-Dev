@@ -8,7 +8,8 @@ unique_ids:
     SkillSelector.TokenBox: 75GBR27YV2LTOGDMQASKITRYJLVBNMG4
     TutorStudentData: '1702490187837747731129188.3761'
     TutorStudentData.RowTemplate1: '1702490328088163481763462.41684'
-  modules: {}
+  modules:
+    Game: UXLOPB4KZY3ME5VYGHTJNTF73TU6E5CS
   server_modules:
     ServerModule1: '1699722637942762751479281.7766'
   assets:
