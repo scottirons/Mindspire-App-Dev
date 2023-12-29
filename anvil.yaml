@@ -294,7 +294,8 @@ startup: {type: form, module: SkillSelector}
 package_name: M3_App_1_1
 allow_embedding: false
 name: M3 App 1 1
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
+  server_spec: null}
 startup_form: null
 db_schema:
   users:
@@ -381,6 +382,9 @@ db_schema:
     - name: correctAnswer
       admin_ui: {order: 5.5, width: 200}
       type: string
+    - name: isNoChange
+      admin_ui: {width: 200}
+      type: bool
     title: Question
   fakequestion:
     client: search
@@ -427,7 +431,7 @@ db_schema:
       type: number
     title: fakeQuestion
   sessions:
-    client: search
+    client: full
     server: full
     columns:
     - name: sessionID
@@ -444,6 +448,15 @@ db_schema:
       type: datetime
     - name: _length
       admin_ui: {width: 200, order: 4}
+      type: number
+    - name: tags
+      admin_ui: {width: 200, order: 5}
+      type: simpleObject
+    - name: correct
+      admin_ui: {width: 200, order: 6}
+      type: number
+    - name: incorrect
+      admin_ui: {width: 200, order: 7}
       type: number
     title: Sessions
   responses:
@@ -465,6 +478,9 @@ db_schema:
     - name: date
       admin_ui: {width: 200, order: 1}
       type: date
+    - name: sessionID
+      admin_ui: {width: 200, order: 5}
+      type: string
     title: Responses
   tag:
     client: search
@@ -516,7 +532,6 @@ db_schema:
       type: simpleObject
     title: User
   images:
-    title: Images
     client: search
     server: full
     columns:
@@ -526,4 +541,5 @@ db_schema:
     - name: image
       admin_ui: {width: 200}
       type: media
+    title: Images
 renamed: true

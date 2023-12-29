@@ -6,7 +6,6 @@ import anvil.tables.query as q
 from anvil.tables import app_tables
 import anvil.server
 import datetime as dt
-import pandas as pd
 from random import shuffle
 
 # This is a server module. It runs on the Anvil server,

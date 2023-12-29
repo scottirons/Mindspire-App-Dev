@@ -15,7 +15,7 @@ import base64
 from anvil.tables import app_tables
 
 class Game(GameTemplate):
-  def __init__(self, user = 'karl.zipple@gmail.com', qList = [], game = '', **properties):
+  def __init__(self, user = 'karl.zipple@gmail.com', qList = [], game = '', lives = 3, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     #self.q = app_tables.question.get(questionID="1")
@@ -24,13 +24,18 @@ class Game(GameTemplate):
     self.missed = []
     self.game = game
     self.qList = qList
-    # self.q = self.randomQ()
+    self.user = user
+    self.startTime = datetime.datetime.now()
+    if self.qList == []:
+      self.qList = anvil.server.call('getQuestions', 'e51', user)
+    self.lives = lives
+    self.q = self.randomQ()
     self.submitted = False
     self.missed = []
-    self.imLives.source = app_tables.images.get(name='3')['image']
+    self.imLives.source = app_tables.images.get(name=str(self.lives))['image']
     self.gameID = base64.b64encode((user + str(datetime.datetime.now())).encode()).decode()
-    print(self.gameID)
-    # self.update_display()
+    self.update_display()
+    
 
   def update_display(self):
     # this handles a variety of small tasks that need to be performed when a new question loads.
@@ -55,10 +60,13 @@ class Game(GameTemplate):
     self.submit.text = 'Submit'
     self.submitted = False
 
-  def radio_button_1_clicked(self, **event_args):
-    """This method is called when this radio button is selected"""
-    pass
-
+  def getQuestions(self, tags, user = 'karl.zipple@gmail.com'):
+    # these two commands serve to get all of the questions matching a tag, then remove the duplicates
+    # though questions currently only have one content tag, this will future-proof it
+    questionList = [dict(list(row)) for tag in tags for row in app_tables.question.search(questionTags = tag)]
+    questionList = [dict(t) for t in {tuple(d.items()) for d in questionList}]
+    return questionList
+  
   def submit__click(self, **event_args):
     if self.radio_A.get_group_value() is None:
       return
@@ -69,9 +77,13 @@ class Game(GameTemplate):
         self.updateELO(1)
       else:
         self.updateELO(0)
+        self.lives -= 1
         self.incorrect += 1
+        self.imLives.source = app_tables.images.get(name=str(self.lives))['image']
         self.missed.append(self.q)
-      app_tables.responses.add_row(date=datetime.date.today(), correct= selected == self.correctAnswer, questionID=self.q['questionID'], response=self.q['order'][selected], userID='karl.zipple@gmail.com')
+      app_tables.responses.add_row(date=datetime.date.today(), correct= selected == self.correctAnswer, 
+                                   questionID=self.q['questionID'], response=self.q['order'][selected], 
+                                   userID='karl.zipple@gmail.com', sessionID=self.gameID)
       self.qList.pop(self.qList.index(self.q))
       self.renorm()
       self.answerRT.visible = True
@@ -80,8 +92,15 @@ class Game(GameTemplate):
       self.submit.text = 'Next'
       self.submitted = True
     else:
-      self.q = self.randomQ()
-      self.update_display()
+      if self.lives > 0:
+        self.q = self.randomQ()
+        self.update_display()
+      else:
+        alert(f'Game over. You got {self.correct} questions correct. Great work!')
+        app_tables.sessions.add_row(UserID=self.user, _length=self.correct + self.incorrect, sessionID=self.gameID,
+                                   StartTime=self.startTime, EndTime=datetime.datetime.now(),
+                                   correct=self.correct, incorrect=self.incorrect)
+        open_form('Dashboard')
     pass
 
   def randomQ(self):
@@ -135,3 +154,4 @@ class Game(GameTemplate):
     totalp = sum(q['p'] for q in self.qList)
     for q in self.qList:
       q['p'] /= totalp
+      pass

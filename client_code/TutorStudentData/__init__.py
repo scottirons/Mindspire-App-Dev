@@ -27,4 +27,11 @@ class TutorStudentData(TutorStudentDataTemplate):
     for skill in self.ddStudent.selected_value[1]['assignedSkills']:
       self.text_box_1.text += skill
     self.rtSessions.content = '#### Sessions for ' + self.ddStudent.selected_value[0]
+    studentID = self.ddStudent.selected_value[1]['userID']
+    sessions = app_tables.sessions.search(tables.order_by('StartTime'), UserID=studentID)
+    sessionData = [{'Date':session['StartTime'].strftime("%c"), 'Skill(s)':session['tags'], 
+                    'Correct':session['correct'], 'Incorrect':session['incorrect']}
+                  for session in sessions]
+    self.repeating_panel_1.items = sessionData
+    
     pass

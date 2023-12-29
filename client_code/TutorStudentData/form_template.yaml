@@ -29,6 +29,22 @@ components:
     properties: {align: center, content: '#### Sessions for <student>'}
     type: RichText
     layout_properties: {grid_position: 'ZSSAPZ,GIOKSD'}
+  - name: dgSessions
+    properties:
+      columns:
+      - {id: JKSDUP, title: Date, data_key: column_1}
+      - {id: VJQQOR, title: Skill(s), data_key: column_2}
+      - {id: OJLQEN, title: Correct, data_key: column_3}
+      - {id: WCCFST, data_key: column_4, title: Missed}
+    type: DataGrid
+    components:
+    - name: repeating_panel_1
+      properties: {item_template: TutorStudentData.RowTemplate1, visible: true}
+      type: RepeatingPanel
+      layout_properties: {}
+      data_bindings:
+      - {property: tag, code: 'self.item['''']', writeback: false}
+    layout_properties: {grid_position: 'AHADID,WBFZCA'}
 - type: FlowPanel
   properties: {}
   name: navbar_links
