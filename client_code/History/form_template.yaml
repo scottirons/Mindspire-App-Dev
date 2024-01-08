@@ -12,6 +12,7 @@ components:
     properties: {item_template: History.ItemTemplate1}
     type: RepeatingPanel
     layout_properties: {grid_position: 'HMANBB,WFUNYA'}
+    data_bindings: []
 - type: FlowPanel
   properties: {}
   name: navbar_links

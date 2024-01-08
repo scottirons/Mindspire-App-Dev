@@ -15,13 +15,18 @@ class History(HistoryTemplate):
     self.init_components(**properties)
 
     curr_user = anvil.users.get_user()
-    user_email = curr_user['email'] if curr_user else "karl.zipple@gmail.com"
+    self.email = curr_user['email'] if curr_user else "karl.zipple@gmail.com"
+    self.responses = self.find_matching_responses()
+    print(self.responses)
+    self.repeating_panel_1.items = self.responses
+    
+
+  def find_matching_responses(self):
     matching_responses = app_tables.responses.search(
         tables.order_by("datetime", ascending=False),
-        userID=user_email
+        userID=self.email
     )
-    for r in matching_responses:
-      print(r)
+    return matching_responses
 
 
   
