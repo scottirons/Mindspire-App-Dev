@@ -13,4 +13,5 @@ class History(HistoryTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-    # Any code you write here will run before the form opens.
+    curr_user = anvil.users.get_user()
+    curr_email = curr_user.email if curr_user else "karl.zipple@gmail.com"
