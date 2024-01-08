@@ -28,5 +28,27 @@ class History(HistoryTemplate):
     )
     return matching_responses
 
+  def format_responses(self, responses):
+    processed_responses = []
+    for response in responses:
+      readable_date = response['datetime_field'].strftime("%Y-%m-%d %H:%M:%S")
+
+        # Retrieve the associated question
+        question = response['questionID']['questionText']
+
+        # Get the chosen and correct answers
+        chosen_answer = response['chosen_answer']
+        correct_answer = response['correct_answer']  # Adjust how you retrieve this as necessary
+
+        # Combine all needed information into a single dictionary
+        processed_response = {
+            'readable_date': readable_date,
+            'question': question,
+            'chosen_answer': chosen_answer,
+            'correct_answer': correct_answer
+        }
+
+        processed_responses.append(processed_response)
+
 
   
