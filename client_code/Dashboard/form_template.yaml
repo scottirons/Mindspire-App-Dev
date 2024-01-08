@@ -35,10 +35,11 @@ components:
     type: Button
     layout_properties: {grid_position: 'QNRAUK,JRDOXH'}
     event_bindings: {click: profile_click}
-  - name: reports
-    properties: {text: Reports, visible: false}
+  - name: history
+    properties: {text: Question History, visible: true}
     type: Button
     layout_properties: {grid_position: 'BOSBOJ,SVVYRU'}
+    event_bindings: {click: history_click}
   - name: button_5
     properties: {text: button_5, visible: false}
     type: Button

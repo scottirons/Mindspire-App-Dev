@@ -23,7 +23,10 @@ from random import shuffle
 def getQuestions(tag, studentID):
   answers = ['A', 'B', 'C', 'D']
   questions = app_tables.question.search(questionTags=q.like(f'%{tag}%'))
-  studentELO = app_tables.user.get(userID=studentID)['eloDictonary'][tag]
+  try:
+    studentELO = app_tables.user.get(userID=studentID)['eloDictonary'][tag]
+  except KeyError:
+    studentELO = 1500
   questionList = []
   for question in questions:
     questionData = {}
@@ -41,7 +44,8 @@ def getQuestions(tag, studentID):
     shuffle(answers)
     questionData['order'] = "".join(answers)
     p = 1
-    p *= pFromELO(studentELO, question['elo'])
+    q_elo = question['elo'] if 'elo' in question else 1500
+    p *= pFromELO(studentELO, q_elo)
     pFromRecency(studentID, question['questionID'])
     questionData['p'] = p
     questionList.append(questionData)

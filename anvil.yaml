@@ -290,7 +290,7 @@ services:
 - source: /runtime/services/google.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: SkillSelector}
+startup: {type: form, module: Dashboard}
 package_name: M3_App_1_1
 allow_embedding: false
 name: M3 App 1 1

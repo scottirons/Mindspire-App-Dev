@@ -27,9 +27,10 @@ class Dashboard(DashboardTemplate):
 
   def profile_click(self, **event_args):
     open_form('Profile')
-    pass
+
+  def history_click(self, **event_args):
+    open_form('History')
 
   def skillQuiz_click(self, **event_args):
     """This method is called when the button is clicked"""
     open_form('SkillSelector')
-    pass
