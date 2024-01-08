@@ -382,6 +382,9 @@ db_schema:
     - name: correctAnswer
       admin_ui: {order: 5.5, width: 200}
       type: string
+    - name: isNoChange
+      admin_ui: {width: 200}
+      type: bool
     title: Question
   fakequestion:
     client: search
@@ -428,7 +431,7 @@ db_schema:
       type: number
     title: fakeQuestion
   sessions:
-    client: search
+    client: full
     server: full
     columns:
     - name: sessionID
@@ -446,6 +449,15 @@ db_schema:
     - name: _length
       admin_ui: {width: 200, order: 4}
       type: number
+    - name: correct
+      admin_ui: {width: 200}
+      type: number
+    - name: incorrect
+      admin_ui: {width: 200}
+      type: number
+    - name: tags
+      admin_ui: {width: 200}
+      type: simpleObject
     title: Sessions
   responses:
     client: full
@@ -466,6 +478,12 @@ db_schema:
     - name: date
       admin_ui: {width: 200, order: 1}
       type: date
+    - name: sessionID
+      admin_ui: {width: 200}
+      type: string
+    - name: datetime
+      admin_ui: {width: 200}
+      type: datetime
     title: Responses
   tag:
     client: search
