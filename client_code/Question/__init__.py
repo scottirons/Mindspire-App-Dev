@@ -23,6 +23,8 @@ class Question(QuestionTemplate):
     self.q = self.randomQ()
     self.submitted = False
     self.missed = []
+    curr_user = anvil.users.get_user()
+    self.email = curr_user['email'] if curr_user else "karl.zipple@gmail.com"
     # Any code you write here will run before the form opens.
     self.update_display()
 
@@ -65,7 +67,7 @@ class Question(QuestionTemplate):
         self.updateELO(0)
         self.incorrect += 1
         self.missed.append(self.q)
-      app_tables.responses.add_row(date=datetime.date.today(), correct= selected == self.correctAnswer, questionID=self.q['questionID'], response=self.q['order'][selected], userID='karl.zipple@gmail.com')
+      app_tables.responses.add_row(date=datetime.date.today(), correct= selected == self.correctAnswer, questionID=self.q['questionID'], response=self.q['order'][selected], userID=self.email, datetime=datetime.datetime.now())
       self.qList.pop(self.qList.index(self.q))
       self.renorm()
       self.answerRT.visible = True
@@ -81,14 +83,9 @@ class Question(QuestionTemplate):
   def randomQ(self):
     if len(self.qList) == 0:
       open_form('Dashboard')
-    x = random.random()
-    qlIndex = 0
-    running_total = 0
-    while running_total < x:
-      result = self.qList[qlIndex]
-      running_total += self.qList[qlIndex]['p']
-      qlIndex += 1
-    return result
+    else:
+      q_index = random.randint(0, len(self.qList) - 1)
+      return self.qList[q_index]
 
   def getAnswer(self, option):
     if option == 'A':
@@ -104,11 +101,11 @@ class Question(QuestionTemplate):
   def updateELO(self, result):
     k = 18
     tag = app_tables.question.get(questionID = self.q['questionID'])['questionTags']
-    studentRow = app_tables.user.get(userID='karl.zipple@gmail.com')
+    studentRow = app_tables.user.get(userID=self.email)
     studentELODictionary = studentRow['eloDictonary']
-    studentELO = studentELODictionary[tag]
+    studentELO = studentELODictionary[tag] if tag in studentELODictionary else 1500
     questionRow =  app_tables.question.get(questionID = self.q['questionID'])
-    questionELO = questionRow['elo']
+    questionELO = questionRow['elo'] if 'elo' in questionRow else 1500
     qStudent = 10 ** ((studentELO + 200) / 400)
     qQuestion = 10 ** (questionELO / 400)
     eStudent = qStudent / (qStudent + qQuestion)

@@ -76,15 +76,21 @@ class SkillSelector(SkillSelectorTemplate):
     
     selected_tags = self.token_box.tokens_list
     
-    #if anvil.users.get_user() is None:
-    #  signin = anvil.users.login_with_form()
+    curr_user = anvil.users.get_user()
+    user_email = curr_user['email'] if curr_user else 'karl.zipple@gmail.com'
     q_list = []
     for tag in selected_tags:
       skill = tag[1][1]
-      q_list += anvil.server.call('getQuestions', skill, 'karl.zipple@gmail.com')
+      q_list += anvil.server.call('getQuestions', skill, user_email)
       
     if q_list:
       open_form('Question', q_list, game = 'game')
+    else:
+      alert("Sorry, no questions were found for your chosen tag(s), please select alternatives!")
 
   def getTag(self, skill):
     return app_tables.tag.search(tagExplanation=skill)[0]['tagID']
+
+  def outlined_button_1_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    open_form('Dashboard')
