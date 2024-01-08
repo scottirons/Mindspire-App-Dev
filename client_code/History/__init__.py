@@ -17,7 +17,7 @@ class History(HistoryTemplate):
     curr_user = anvil.users.get_user()
     self.email = curr_user['email'] if curr_user else "karl.zipple@gmail.com"
     self.responses = self.find_matching_responses()
-    print(self.responses)
+    self.formatted_responses = self.format_responses(self.responses)
     self.repeating_panel_1.items = self.responses
     
 
@@ -31,24 +31,21 @@ class History(HistoryTemplate):
   def format_responses(self, responses):
     processed_responses = []
     for response in responses:
-      readable_date = response['datetime_field'].strftime("%Y-%m-%d %H:%M:%S")
+      readable_date = response['datetime'].strftime("%Y-%m-%d %H:%M:%S")
 
-        # Retrieve the associated question
-        question = response['questionID']['questionText']
+      question = list(app_tables.question.search(questionID=response['questionID']))[0]['questionText']
+      correct = response['correct']
+      chosen = response['response'] 
 
-        # Get the chosen and correct answers
-        chosen_answer = response['chosen_answer']
-        correct_answer = response['correct_answer']  # Adjust how you retrieve this as necessary
+      processed_response = {
+          'date': readable_date,
+          'question': question,
+          'correct': correct,
+          'chosen': chosen
+      }
 
-        # Combine all needed information into a single dictionary
-        processed_response = {
-            'readable_date': readable_date,
-            'question': question,
-            'chosen_answer': chosen_answer,
-            'correct_answer': correct_answer
-        }
-
-        processed_responses.append(processed_response)
+      processed_responses.append(processed_response)
+    return processed_responses
 
 
   
