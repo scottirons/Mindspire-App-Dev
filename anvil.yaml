@@ -481,6 +481,9 @@ db_schema:
     - name: sessionID
       admin_ui: {width: 200, order: 5}
       type: string
+    - name: datetime
+      admin_ui: {width: 200}
+      type: datetime
     title: Responses
   tag:
     client: search
